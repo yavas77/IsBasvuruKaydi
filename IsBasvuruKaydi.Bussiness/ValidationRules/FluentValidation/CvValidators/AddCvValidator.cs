@@ -41,10 +41,6 @@ namespace IsBasvuruKaydi.Bussiness.ValidationRules.FluentValidation.CvValidators
             RuleFor(p => p.Adres)
               .NotEmpty()
               .WithMessage("Adres alanı boş bırakılamaz!");
-
-            RuleFor(p => p.Fotograf)
-              .NotEmpty()
-              .WithMessage("Fotoğraf yüklemeniz gerekmektedir!");
         }
     }
 }
