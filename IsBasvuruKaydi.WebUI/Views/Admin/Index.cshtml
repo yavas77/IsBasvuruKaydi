@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ListCvDTO>
+
+@{
+	ViewData["Title"] = "Gelen Başvurular";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	string renk = @"style='background-color:red'";
+}
+
+<h1>Gelen Başvuru Listesi</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				Ad Soyad
+			</th>
+			<th>
+				Telefon
+			</th>
+			<th>
+				E-Mail
+			</th>
+
+
+
+
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+
+			<tr data-id="@item.Id" @if(item.Goruntuleme==false){
+	    @renk
+ }>
+				<td>
+					@item.AdSoyad
+				</td>
+				<td>
+					@item.Telefon
+				</td>
+				<td>
+					@item.Mail
+				</td>
+				<td>
+				</td>
+				<td>
+					<a asp-action="Detail" class="btn btn-outline-warning btn-sm" asp-route-Id="@item.Id">Detaylar</a>
+					<a class="delete btn btn-outline-danger btn-sm" data-id="@item.Id">Sil</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+@section Scripts{
+<script>
+	$().ready(function () {
+		$(".delete").click(function () {
+			var cvDeleteDTO = {
+				id: $(this).data("id")
+			}
+
+			$.ShowConfirm('Dikkat', 'Kişi  silinecek, Emin misiniz?', 'Evet', 'İptal', function () { $.AjaxDelete('/Admin/CvDelete/', cvDeleteDTO) }
+			);
+
+		});
+	});
+</script>
+
+}

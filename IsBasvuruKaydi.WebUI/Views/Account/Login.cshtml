@@ -1,0 +1,67 @@
+﻿@model SignInDto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+          background: #007bff;
+          background: linear-gradient(to right, #0062E6, #33AEFF);
+        }
+
+        .btn-login {
+          font-size: 0.9rem;
+          letter-spacing: 0.05rem;
+          padding: 0.75rem 1rem;
+        }
+
+        .btn-google {
+          color: white !important;
+          background-color: #ea4335;
+        }
+
+        .btn-facebook {
+          color: white !important;
+          background-color: #3b5998;
+}
+    </style>
+    <title>Login</title>
+</head>
+<body>
+     <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="card-title text-center mb-5 fw-light fs-5">Giriş Yap</h5>
+            <form asp-action="Login" method="post">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" asp-for="Email" placeholder="Email Adres">
+                 <span asp-validation-for="Email" class="text-danger"></span>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" asp-for="Password" placeholder="Şifre">
+                 <span asp-validation-for="Password" class="text-danger"></span>
+              </div>
+              <div class="d-grid">
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Giriş Yap</button>
+              </div>
+          
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>
